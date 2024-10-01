@@ -12,7 +12,7 @@ func _ready():
 # Rota la camara con el ratón
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * 0.001)
+		rotate_y(-event.relative.x * 0.005)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

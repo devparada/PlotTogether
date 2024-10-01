@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5a5vt7fra14m"]
+[gd_scene load_steps=9 format=3 uid="uid://c5a5vt7fra14m"]
 
 [ext_resource type="PackedScene" uid="uid://bxkc3gfxwan7h" path="res://player.tscn" id="1_mhb72"]
+[ext_resource type="PackedScene" uid="uid://bmj1osl18k3u0" path="res://obstaculo.tscn" id="2_posv4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxdi3"]
-albedo_color = Color(0.368627, 1, 0.494118, 1)
+albedo_color = Color(0.172627, 0.516633, 0.515514, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c77yi"]
 material = SubResource("StandardMaterial3D_oxdi3")
@@ -11,6 +12,21 @@ size = Vector3(50, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ixnmn"]
 size = Vector3(50, 1, 50)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5iqai"]
+sky_top_color = Color(0.168659, 0.460032, 0.737372, 1)
+sky_horizon_color = Color(0.48214, 0.702808, 0.698297, 1)
+sky_curve = 0.289781
+ground_bottom_color = Color(0.10472, 0.193159, 0.189415, 1)
+ground_horizon_color = Color(0.46142, 0.70685, 0.704519, 1)
+ground_curve = 0.00554783
+
+[sub_resource type="Sky" id="Sky_f47a8"]
+sky_material = SubResource("ProceduralSkyMaterial_5iqai")
+
+[sub_resource type="Environment" id="Environment_18pxr"]
+background_mode = 2
+sky = SubResource("Sky_f47a8")
 
 [node name="Nivel" type="Node3D"]
 
@@ -29,3 +45,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3911, 1.90158, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.414124, 0.243248, -0.877115, 0.788131, 0.38625, 0.479229, 0.455357, -0.889743, -0.0317562, -41.653, 13.6571, 0)
 sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_18pxr")
+
+[node name="Obstaculos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07422, 0)
+
+[node name="Obstaculo" parent="Obstaculos" instance=ExtResource("2_posv4")]
+
+[node name="Obstaculo2" parent="Obstaculos" instance=ExtResource("2_posv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.48666, 0, 7.55045)
+
+[node name="Obstaculo3" parent="Obstaculos" instance=ExtResource("2_posv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9147, 0, -10.5226)
