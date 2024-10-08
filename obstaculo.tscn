@@ -1,17 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmj1osl18k3u0"]
+[gd_scene load_steps=6 format=3 uid="uid://bmj1osl18k3u0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qkxm"]
-albedo_color = Color(0.447078, 0.812963, 0.394655, 1)
+[ext_resource type="Script" path="res://obstaculo.gd" id="1_jivho"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_xf57c"]
-material = SubResource("StandardMaterial3D_3qkxm")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dqvj"]
+albedo_color = Color(0.769966, 0.255812, 0.797946, 1)
+metallic = 0.22
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wymxm"]
+[sub_resource type="BoxMesh" id="BoxMesh_77jos"]
+material = SubResource("StandardMaterial3D_3dqvj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a070d"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnl71"]
+size = Vector3(1.5, 1.5, 1.5)
 
 [node name="Obstaculo" type="RigidBody3D"]
+gravity_scale = 0.543
+script = ExtResource("1_jivho")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_xf57c")
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_77jos")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_a070d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_wymxm")
+shape = SubResource("BoxShape3D_bnl71")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.031341, 0.999509, 0, -0.999509, -0.031341, -0.0258256, 3.66038, -0.0928721)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
