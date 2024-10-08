@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlfanlv5m3pja"]
 
-[ext_resource type="Script" path="res://enemigo.gd" id="1_ully4"]
+[ext_resource type="Script" path="res://scripts/enemigo.gd" id="1_ully4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_535kp"]
 albedo_color = Color(0.672056, 0, 0.15979, 1)

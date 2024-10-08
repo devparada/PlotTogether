@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmj1osl18k3u0"]
 
-[ext_resource type="Script" path="res://obstaculo.gd" id="1_jivho"]
+[ext_resource type="Script" path="res://scripts/obstaculo.gd" id="1_jivho"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dqvj"]
 albedo_color = Color(0.769966, 0.255812, 0.797946, 1)
